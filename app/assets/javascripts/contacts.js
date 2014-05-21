@@ -20,7 +20,7 @@ $(document).ready(function(){
                                "<div>",
                               "<img src='", newContact.imgUrl, "' class='contact-img'>",
                             "</div>",
-                            "<div class='contact-item'>", newContact.name, "</div>",
+                            "<div class='contact-item'>", newcontContact.name, "</div>",
                             "<div class='contact-item'>", newContact.email, "</div>",
                             "<div class='contact-item'>", newContact.number, "</div>",
           
@@ -71,4 +71,13 @@ $(document).ready(function(){
     addContact(newContact);
  
   });
+
+    // Array of contacts
+    $.get('/contacts.json').done(function(data) {
+      contacts = data
+      $.each(contacts, function(index, item){
+        addContact(item);
+      });
+    });
+
 });
